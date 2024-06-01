@@ -1,17 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://drg2y6qc6d6xt"]
+[gd_scene load_steps=5 format=3 uid="uid://drg2y6qc6d6xt"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_3qeb4"]
 [ext_resource type="PackedScene" uid="uid://dvop4rdshyijl" path="res://player.tscn" id="1_5w7ay"]
+[ext_resource type="PackedScene" uid="uid://bb1jtsx3sawjo" path="res://platform.tscn" id="2_ftt1b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aneso"]
-size = Vector2(1140, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebsn6"]
+size = Vector2(1227.5, 38)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_3qeb4")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_5w7ay")]
-position = Vector2(576, 485)
+[node name="Player" parent="." instance=ExtResource("1_5w7ay")]
+position = Vector2(597, 608)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(288, -197)
+limit_left = 0
+limit_right = 1155
+limit_bottom = 675
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(580, 636)
-shape = SubResource("RectangleShape2D_aneso")
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="StaticBody2D6" parent="Platforms" instance=ExtResource("2_ftt1b")]
+position = Vector2(3, 262)
+
+[node name="StaticBody2D5" parent="Platforms" instance=ExtResource("2_ftt1b")]
+position = Vector2(518, 152)
+
+[node name="StaticBody2D7" parent="Platforms" instance=ExtResource("2_ftt1b")]
+position = Vector2(919, 60)
+
+[node name="StaticBody2D4" parent="Platforms" instance=ExtResource("2_ftt1b")]
+position = Vector2(882, 295)
+
+[node name="StaticBody2D3" parent="Platforms" instance=ExtResource("2_ftt1b")]
+position = Vector2(353, 444)
+
+[node name="StaticBody2D2" parent="Platforms" instance=ExtResource("2_ftt1b")]
+position = Vector2(950, 479)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(593.25, 666)
+shape = SubResource("RectangleShape2D_ebsn6")
